@@ -1,0 +1,10 @@
+/2025_analysis/
+*.pdf
+*.png
+# Project directories to ignore
+boundaries/
+figs/
+logs/
+outputs/
+scripts/superceded/
+scripts/temp/
