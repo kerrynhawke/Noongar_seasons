@@ -55,7 +55,16 @@ for i, month_abbr in enumerate(month_abbrs):
     month_anomalies = monthly_anomaly[mask]
 
     # Linear regression
-    slope, intercept, r_value, p_value, std_err = stats.linregress(month_years, month_anomalies)
+    # slope, intercept, r_value, p_value, std_err = stats.linregress(month_years, month_anomalies)
+
+    # OLS regression ONLY for p-value
+    ols_slope, intercept, r_value, p_value, std_err = stats.linregress(month_years, month_anomalies)
+
+    # Sen's slope for the trend estimate
+    sen_slope, sen_intercept, lower, upper = stats.theilslopes(month_anomalies, month_years)
+
+    # Use Sen's slope as the slope value shown on the plot
+    slope = sen_slope
 
     # Bar colours
     bar_colors = ['blue' if val >= 0 else 'red' for val in month_anomalies]
@@ -91,7 +100,7 @@ for i, month_abbr in enumerate(month_abbrs):
     # Slope + p-value (bottom-right, keep box)
     ax.text(
         0.98, 0.05,
-        f"Slope: {slope:.2f}\nP-value: {p_value:.3f}",
+        f"Sen slope: {slope:.2f}\nP-value: {p_value:.3f}",
         transform=ax.transAxes,
         fontsize=10,
         ha='right', va='bottom',

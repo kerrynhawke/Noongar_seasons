@@ -28,10 +28,16 @@ Note: the original shape file was obtained from Sarah Sapsford and merged in Arc
 - Output masked monthly mean file 2: /Noongar_seasons/output/masked_mthmeans_1961_1990.nc
 - Output masked monthly mean file 3: /Noongar_seasons/output/masked_mthmeans_1993_2022.nc 
 
-## Figure 3. Monthly mean rainfall climatologies ADD
+## Figure 3. Monthly mean rainfall climatologies ADD WORKFLOW
 
 Workflow for the creation of a figure depicting 
 
+### #. 
+
+- Script: /Noongar_seasons/scripts/.py 
+- Input climatology file 1: /Noongar_seasons/outpt/masked_monclim_from_1961_1990.nc (created in 2 above)
+- Input climatology file 2: /Noongar_seasons/output/masked_monclim_from_1993_2022.nc (created in 2 above)
+- Output plot: /Noongar_seasons/figs/
 
 ## Figure 4. Absolute change in monthly rainfall 
 
@@ -179,16 +185,18 @@ Test: Mann-Whitney U test, where P < 0.05
 
 
 ## Figure 7. Monthly rainfall anomalies
-Workflow for the creation of a figure depicting monthly rainfall anomalies (mm) 1900-2022 compared to 1961-1990 climatology, with 10-year centred running mean.
+Workflow for the creation of a figure depicting monthly rainfall anomalies (mm) 1900-2022 compared to 1961-1990 climatology, including a 10‑year centred running mean and Sen’s slope trend estimation with associated p‑values (from OLS regression).
 
 ### 16. calculate monthly rainfall anomalies, 1900-2022
+Compute monthly rainfall anomalies by subtracting the 1961–1990 monthly climatology from the 1900–2022 monthly means.
+
 - Input masked monthly mean file 1: /Noongar_seasons/outputs/masked_mthmeans_1900_2022.nc (calculated in 3 above)
 - Input masked monthly mean file 2: /Noongar_seasons/outputs/masked_mthmeans_1961_1990.nc (calculated in 3 above)
 - Output masked monthly anomalies file: Noongar_seasons/outputs/masked_mthregionanom_1900-2022.nc
 
 
 ### 17. Create monthly rainfall anomaly timeseries
-3x4 monthly timeseries panel plot, 1900-2022 monthly rainfall anomaly (-100 mm to +100 mm) with 10-year centred running mean
+Generate a 3×4 panel plot showing monthly rainfall anomalies (mm) from 1900–2022, with bars representing monthly anomalies (−100 mm to +100 mm); 10‑year centred running mean (black line); Sen’s slope trend value displayed for each month; and P‑value from OLS regression displayed for each month.
 
 - Script: /data/Kerryn/AGCD_Scripts/plot_anomalies_month_rain_region.py 
 - Input file: /Noongar_seasons/outputs/masked_mthregionanom_1900-2022.nc (created in 16 above)
@@ -198,14 +206,17 @@ Workflow for the creation of a figure depicting monthly rainfall anomalies (mm) 
 Workflow for the creation of a figure depicting seasonal rainfall anomalies (mm) 1900-2022 compared to 1961-1990 climatology, with 10-year centred running mean. The Noongar six-season calendar includes Birak (first summer, December-January), Bunuru (second summer, February-March), Djeran (autumn, April-May), Makuru (winter, June-July), Djilba (first spring, August-September) and Kambarang (second spring, October-November). The four-season calendar includes summer (December-February), autumn (March-May), winter (June-August) and spring (September-November).
 
 ### 18. calculate seasonal rainfall anomalies, 1900-2022
+Seasonal anomalies are computed by aggregating monthly rainfall 1900-2022 into seasonal totals, then subtracting the corresponding 1961–1990 seasonal climatology.
+
+- Script: /Noongar_seasons/scripts/
 - Input masked monthly mean file 1: /Noongar_seasons/outputs/masked_mthmeans_1900_2022.nc (calculated in 3 above)
 - Input masked monthly mean file 2: /Noongar_seasons/outputs/masked_mthmeans_1961_1990.nc (calculated in 3 above)
 - Output masked monthly anomalies file: Noongar_seasons/outputs/masked_mthregionanom_1900-2022.nc
 
 
-### 19. Create monthly rainfall anomaly timeseries
-3x4 seasonal timeseries panel plot, 1900-2022 monthly rainfall anomaly (-100 mm to +100 mm) with 10-year centred running mean
+### 19. Create seasonal rainfall anomaly timeseries
+Generate a 3×4 panel plot showing seasonal rainfall anomalies (mm) from 1900–2022, with bars representing seasonal anomalies (−200 mm to +200 mm); 10‑year centred running mean (black line); Sen’s slope trend value displayed  for each season; and P‑value from OLS regression displayed for each season.
 
-- Script: /data/Kerryn/AGCD_Scripts/plot_anomalies_month_rain_region.py 
+- Script: /Noongar_seasons/scripts/plot_anomalies_seas_rain_region.py 
 - Input file: /Noongar_seasons/outputs/masked_mthregionanom_1900-2022.nc (created in 16 above)
-- Output plot: Noongar_seasons/figs/rainfall_anomaly_timeseries_months_10yrunningmean.png
+- Output plot: Noongar_seasons/figs/rainfall_anomaly_timeseries_seas_10yrunningmean.png
