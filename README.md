@@ -28,7 +28,7 @@ Note: the original shape file was obtained from Sarah Sapsford and merged in Arc
 - Output masked monthly mean file 2: /Noongar_seasons/output/masked_mthmeans_1961_1990.nc
 - Output masked monthly mean file 3: /Noongar_seasons/output/masked_mthmeans_1993_2022.nc 
 
-## Figure 3. Monthly mean rainfall climatologies
+## Figure 3. Monthly mean rainfall climatologies ADD
 
 Workflow for the creation of a figure depicting 
 
@@ -71,7 +71,7 @@ Test: Mann-Whitney U test, where P < 0.05
 
 ## Figure 4. Proportional change in monthly rainfall
 
-Proportional change in rainfall for each month, 1993-2022 compared to 1961-1990 with significance stippling (significance mask P < 0.05, using the Mann-Whitney U test).
+Workflow for the creation of a figure depicting proportional change in rainfall for each month, 1993-2022 compared to 1961-1990 with significance stippling (significance mask P < 0.05, using the Mann-Whitney U test).
 
 ### 7. Calculate proportional change in rainfall between 1961-1990 and 1993-2022
 
@@ -106,7 +106,7 @@ Test: Mann-Whitney U test, where P < 0.05
 
 ## Figure 5. Absolute change in seasonal rainfall
 
-Absolute change in seasonal rainfall (mm) between 1961-1990 and 1993-2022. The Noongar six-season calendar includes Birak (first summer, Debember-January), Bunuru (second summer, February-March), Djeran (autumn, April-May), Makuru (winter, June-July), Djilba (first spring, August-September) and Kambarang (second spring, October-November). The four-season calendar includes summer (December-February), autumn (March-May), winter (June-August) and spring (September-November). Significance stippling (significance mask P < 0.05, using the Mann-Whitney U test).
+Workflow for the creation of a figure depicting absolute change in seasonal rainfall (mm) between 1961-1990 and 1993-2022. The Noongar six-season calendar includes Birak (first summer, Debember-January), Bunuru (second summer, February-March), Djeran (autumn, April-May), Makuru (winter, June-July), Djilba (first spring, August-September) and Kambarang (second spring, October-November). The four-season calendar includes summer (December-February), autumn (March-May), winter (June-August) and spring (September-November). Significance stippling (significance mask P < 0.05, using the Mann-Whitney U test).
 
 ### 10. Calculate absolute change in rainfall between 1961-1990 and 1993-2022
 
@@ -131,8 +131,8 @@ Test: Mann-Whitney U test, where P < 0.05
 - Output masked seasonal absolute change significance mask file: /Noongar_seasons/outputs/mask_abs_season_significance_masked.nc
 
 
-### 12. Create absolute change in monthly rainfall plot
-3x4 plot showing spatial absolute change in monthly rainfall across Noongar region (-50 mm to +50 mm) with significance stippling (P = 0.05)
+### 12. Create absolute change in seasonal rainfall plot
+3x4 plot showing spatial absolute change in seasonal rainfall across Noongar region (-1 % to +1 %) with significance stippling (P = 0.05)
 
 - Script: /data/Kerryn/AGCD_Scripts/plot_abs_seas_rain_panel.py 
 - Input absolute change file: /Noongar_seasons/outputs/masked_abs_change_1993_2022_minus_1961_1990.nc (created in 10 above)
@@ -143,7 +143,7 @@ Test: Mann-Whitney U test, where P < 0.05
 
 ## Figure 6. Proportional change in seasonal rainfall
 
-Proportional change in seasonal rainfall (mm) between 1961-1990 and 1993-2022. The Noongar six-season calendar includes Birak (first summer, Debember-January), Bunuru (second summer, February-March), Djeran (autumn, April-May), Makuru (winter, June-July), Djilba (first spring, August-September) and Kambarang (second spring, October-November). The four-season calendar includes summer (December-February), autumn (March-May), winter (June-August) and spring (September-November). Significance stippling (significance mask P < 0.05, using the Mann-Whitney U test).
+Workflow for the creation of a figure depicting proportional change in seasonal rainfall (mm) between 1961-1990 and 1993-2022. The Noongar six-season calendar includes Birak (first summer, Debember-January), Bunuru (second summer, February-March), Djeran (autumn, April-May), Makuru (winter, June-July), Djilba (first spring, August-September) and Kambarang (second spring, October-November). The four-season calendar includes summer (December-February), autumn (March-May), winter (June-August) and spring (September-November). Significance stippling (significance mask P < 0.05, using the Mann-Whitney U test).
 
 
 ### 13. Calculate proportional change in rainfall between 1961-1990 and 1993-2022
@@ -169,8 +169,8 @@ Test: Mann-Whitney U test, where P < 0.05
 - Output masked seasonal proportional change significance mask file: /Noongar_seasons/outputs/mask_prop_season_significance_masked.nc
 
 
-### 15. Create proportional change in monthly rainfall plot
-3x4 plot showing spatial proportional change in monthly rainfall across Noongar region (-50 mm to +50 mm) with significance stippling (P = 0.05)
+### 15. Create proportional change in seasonal rainfall plot
+3x4 plot showing spatial proportional change in seasonal rainfall across Noongar region (-1 % to +1 %) with significance stippling (P = 0.05)
 
 - Script: /data/Kerryn/AGCD_Scripts/plot_prop_seas_rain_panel.py 
 - Input proportional change file: /Noongar_seasons/outputs/masked_prop_change_1993_2022_minus_1961_1990.nc (created in 13 above)
@@ -179,7 +179,7 @@ Test: Mann-Whitney U test, where P < 0.05
 
 
 ## Figure 7. Monthly rainfall anomalies
-Monthly rainfall anomalies (mm) 1900-2022 compared to 1961-1990 climatology, with 10-year centred running mean.
+Workflow for the creation of a figure depicting monthly rainfall anomalies (mm) 1900-2022 compared to 1961-1990 climatology, with 10-year centred running mean.
 
 ### 16. calculate monthly rainfall anomalies, 1900-2022
 - Input masked monthly mean file 1: /Noongar_seasons/outputs/masked_mthmeans_1900_2022.nc (calculated in 3 above)
@@ -194,61 +194,18 @@ Monthly rainfall anomalies (mm) 1900-2022 compared to 1961-1990 climatology, wit
 - Input file: /Noongar_seasons/outputs/masked_mthregionanom_1900-2022.nc (created in 16 above)
 - Output plot: Noongar_seasons/figs/rainfall_anomaly_timeseries_months_10yrunningmean.png
 
+## Figure 8. Seasonal rainfall anomalies - CHECK
+Workflow for the creation of a figure depicting seasonal rainfall anomalies (mm) 1900-2022 compared to 1961-1990 climatology, with 10-year centred running mean. The Noongar six-season calendar includes Birak (first summer, December-January), Bunuru (second summer, February-March), Djeran (autumn, April-May), Makuru (winter, June-July), Djilba (first spring, August-September) and Kambarang (second spring, October-November). The four-season calendar includes summer (December-February), autumn (March-May), winter (June-August) and spring (September-November).
+
+### 18. calculate seasonal rainfall anomalies, 1900-2022
+- Input masked monthly mean file 1: /Noongar_seasons/outputs/masked_mthmeans_1900_2022.nc (calculated in 3 above)
+- Input masked monthly mean file 2: /Noongar_seasons/outputs/masked_mthmeans_1961_1990.nc (calculated in 3 above)
+- Output masked monthly anomalies file: Noongar_seasons/outputs/masked_mthregionanom_1900-2022.nc
 
 
-Figure 6. Seasonal rainfall anomalies THIS IS NOT CREATING THE RIGHT PLOTS
-=====================================
-* Seasonal rainfall anomalies (mm) 1900-2022 compared to 1961-1990 climatology, with 10-year centred running mean. The Noongar six-season calendar includes Birak (first summer, December-January), Bunuru (second summer, February-March), Djeran (autumn, April-May), Makuru (winter, June-July), Djilba (first spring, August-September) and Kambarang (second spring, October-November). The four-season calendar includes summer (December-February), autumn (March-May), winter (June-August) and spring (September-November).
+### 19. Create monthly rainfall anomaly timeseries
+3x4 seasonal timeseries panel plot, 1900-2022 monthly rainfall anomaly (-100 mm to +100 mm) with 10-year centred running mean
 
-
-1. Create Noongar region mask .nc file from shape file
-
-* Script: /data/Kerryn/My_Scripts/AGCD_Scripts/create_mask.py
-* Original Shapefile: /Noongar_seasons/outputs/mask_JK_superceded/Noongarborder.shp
-* Merged Shapefile (used in calculations*): /Noongar_seasons/outputs/Noongarborder_merged.shp
-* Output mask file: /Noongar_seasons/outputs/mask_merged.nc
-
-* Note: the original shape file was obtained from Sarah Sapsford and merged in ArcGIS by Kerryn Hawke into a single polygon over the land (retaining island polygons) before converting into NetCDF format. This was done as the original had many polygons which resulted in erroneous null values within the region in the NetCDF file.
-
-
-2. Create monthly climatologies
-
-* Script: /data/Kerryn/My_Scripts/AGCD_Scripts/calc_masked_monthly_climatology.py
-* Input files: /data2/AGCD/v2-0-1/precip/total/r001/01month/
-* Mask file: /Noongar_seasons/outputs/mask_merged.nc (created in Step 1)
-* Output climatology file 1: /Noongar_seasons/outputs/monclim_from_1961_1990.nc
-* Output climatology file 2: /Noongar_seasons/outputs/monclim_from_1993_2022.nc
-
-
-3. Calculate monthly means
-
-* Script: /data/Kerryn/AGCD_Scripts/calc_masked_monthly_means.py
-* Input files: /data2/AGCD/v2-0-1/precip/total/r001/01month/
-* Mask file: /Noongar_seasons/outputs/mask_merged.nc (created in Step 1)
-* Output masked monthly mean file 1: /Noongar_seasons/outputs/masked_mthmeans_1900_2022.nc
-* Output masked monthly mean file 2: /Noongar_seasons/outputs/masked_mthmeans_1961_1990.nc
-* Output masked monthly mean file 3: /Noongar_seasons/outputs/masked_mthmeans_1993_2022.nc
-
-
-### 4. calculate seasonal rainfall anomalies, 1900-2022
-NOTE: Summer and Birak are assigned to the following year in this script e.g., Summer DJF 2020-2021 = Summer 2021
-
-- Script: /data/Kerryn/AGCD_Scripts/calc_masked_seas_anomalies_region.py
-- Input masked monthly mean file 1: /Noongar_seasons/outputs/masked_mthmeans_1900_2022.nc (calculated in Step 3)
-*- Input masked monthly mean file 2: /Noongar_seasons/outputs/masked_mthmeans_1961_1990.nc (calculated in Step 3)
-- Output masked seasonal anomalies file: /Noongar_seasons/outputs/masked_seasregionanom_1900-2022.nc
-- Output dimensions = season (10), season_year (124)
-- Output variables = float anomaly(season, season_year) ; 
-- anomaly:_FillValue = NaNf ;
--  string season(season) ;
--  double season_year(season_year) ;
--  season_year:_FillValue = NaN ;
-
-
-### 5. Create  seasonal rainfall anomaly timeseries
-3x4 monthly timeseries panel plot, 1900-2022 monthly rainfall anomaly (-120 mm to +120 mm) with 10-year centred running mean
-
-- Script: /data/Kerryn/AGCD_Scripts/plot_anomalies_seas_rain_region.py
-- Input file: /Noongar_seasons/outputs/masked_seasregionanom_1900-2022.nc (created in Step 4)
-- Output plot: Noongar_seasons/figs/rainfall_anomaly_timeseries_seas_10yrunningmean.png
-
+- Script: /data/Kerryn/AGCD_Scripts/plot_anomalies_month_rain_region.py 
+- Input file: /Noongar_seasons/outputs/masked_mthregionanom_1900-2022.nc (created in 16 above)
+- Output plot: Noongar_seasons/figs/rainfall_anomaly_timeseries_months_10yrunningmean.png
