@@ -1,4 +1,4 @@
-# Indigenous versus Conventional Seasons Analysis Documentation:
+# Indigenous versus conventional seasons analysis documentation:
 
 ## Data preparation and creation of monthly climatology and means files
 
@@ -16,8 +16,8 @@ Note: the original shape file was obtained from Sarah Sapsford and merged in Arc
  - Script: /Noongar_seasons/scripts/calc_masked_monthly_climatology.py 
  - Input files: /data2/AGCD/v2-0-1/precip/total/r001/01month/ (AGCD downloaded files)
  - Mask file: /Noongar_seasons/boundaries/Noongarborder_merged.shp (created in 1 above)
- - Output climatology file 1: /Noongar_seasons/output/masked_monclim_from_1961_1990.nc 
- - Output climatology file 2: /Noongar_seasons/output/masked_monclim_from_1993_2022.nc
+ - Output masked climatology file 1: /Noongar_seasons/output/masked_monclim_from_1961_1990.nc 
+ - Output masked climatology file 2: /Noongar_seasons/output/masked_monclim_from_1993_2022.nc
 
 ### 3. Calculate monthly means 
 
@@ -30,7 +30,7 @@ Note: the original shape file was obtained from Sarah Sapsford and merged in Arc
 
 ## Figure 2. Absolute change in monthly rainfall 
 
-Absolute change in rainfall for each month, 1993-2022 compared to 1961-1990 with significance stippling (significance mask P < 0.05, using the Mann-Whitney U test).
+Create of a figures depicting absolute change in rainfall for each month, 1993-2022 compared to 1961-1990 with significance stippling (significance mask P < 0.05, using the Mann-Whitney U test).
 
 ### 4. Calculate absolute change in rainfall between 1961-1990 and 1993-2022 
 
@@ -39,28 +39,28 @@ Absolute change in rainfall for each month, 1993-2022 compared to 1961-1990 with
  - Script: /Noongar_seasons/scripts/calc_masked_abs_prop_rain_change.py 
  - Input climatology file 1: /Noongar_seasons/outpt/masked_monclim_from_1961_1990.nc (created in 2 above)
  - Input climatology file 2: /Noongar_seasons/output/masked_monclim_from_1993_2022.nc (created in 2 above)
- - Input monthly mean file 1: /Noongar_seasons/output/masked_mthmeans_1961_1990.nc (created in 3 above)
- - Input monthly mean file 2: /Noongar_seasons/output/masked_mthmeans_1993_2022.nc (created in 3 above)
+ - Input masked monthly mean file 2: /Noongar_seasons/output/masked_mthmeans_1961_1990.nc (created in 3 above)
+ - Input masked monthly mean file 3: /Noongar_seasons/output/masked_mthmeans_1993_2022.nc (created in 3 above)
  - Output absolute change file: /Noongar_seasons/output/masked_abs_change_1993_2022_minus_1961_1990.nc 
 
 
 ### 5. Calculate significance for monthly absolute change in rainfall between 1961-1990 and 1993-2022
 
- - Test: Mann-Whitney U test, where P < 0.05
+Test: Mann-Whitney U test, where P < 0.05
 
- - Script: /Noongar_seasons/scripts/calc_masked_abs_sig_month_mask.py
- - Input masked monthly mean file 2: /Noongar_seasons/output/masked_mthmeans_1961_1990.nc (created in 3 above)
- - Input masked monthly mean file 3: /Noongar_seasons/output/masked_mthmeans_1993_2022.nc (created in 3 above)
+- Script: /Noongar_seasons/scripts/calc_masked_abs_sig_month_mask.py
+- Input masked monthly mean file 2: /Noongar_seasons/output/masked_mthmeans_1961_1990.nc (created in 3 above)
+- Input masked monthly mean file 3: /Noongar_seasons/output/masked_mthmeans_1993_2022.nc (created in 3 above)
 - Mask file: /Noongar_seasons/boundaries/Noongarborder_merged.shp (created in 1 above)
- - Output masked monthly absolute change significance mask file: /Noongar_seasons/output/mask_abs_month_significance_masked.nc
+- Output masked monthly absolute change significance mask file: /Noongar_seasons/output/mask_abs_month_significance_masked.nc
 
 
 ### 6. Create absolute change in monthly rainfall plot
 3x4 plot showing spatial absolute change in monthly rainfall across Noongar region (-50 mm to +50 mm) with significance stippling (P = 0.05)
 
- - Script: /Noongar_seasons/scripts/plot_abs_month_rain_panel.py
- - Input absolute change file: /Noongar_seasons/outputs/masked_abs_change_1993_2022_minus_1961_1990.nc (created in 4 above)
- - Input masked monthly absolute change significance mask file: /Noongar_seasons/outputs/mask_abs_month_significance_masked.nc (created in 5 above)
+- Script: /Noongar_seasons/scripts/plot_abs_month_rain_panel.py
+- Input absolute change file: /Noongar_seasons/outputs/masked_abs_change_1993_2022_minus_1961_1990.nc (created in 4 above)
+- Input masked monthly absolute change significance mask file: /Noongar_seasons/outputs/mask_abs_month_significance_masked.nc (created in 5 above)
  - Output plot: /Noongar_seasons/figs/mask_abs_sig_change_month_rain_sig.png
 
 
