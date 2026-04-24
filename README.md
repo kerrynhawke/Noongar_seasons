@@ -1,44 +1,43 @@
-Documentation for analysis for paper:
+Analysis Documentation:
 
-Figure 1. Absolute change in monthly rainfall 
-=============================================
+**Data preparation and creation of monthly climatology and means files
+***1. Create Noongar region mask .nc file from shape file 
+
+ - Script: /Noongar_seasons/scripts/0a_create_mask.py
+ - Original Shapefile: /Noongar_seasons/boundaries/Noongarborder.shp 
+ - Merged Shapefile (used in calculations*): /Noongar_seasons/boundaries/Noongarborder_merged.shp 
+ - Output mask file: /Noongar_seasons/outputs/mask_merged.nc 
+
+Note: the original shape file was obtained from Sarah Sapsford and merged in ArcGIS by Kerryn Hawke into a single polygon over the land (retaining island polygons) lsbefore converting into NetCDF format. This was done as the original had many polygons which resulted in erroneous null values within the region in the NetCDF file. 
+
+
+***2. Create monthly climatologies 
+
+ - Script: /Noongar_seasons/scripts/calc_masked_monthly_climatology.py 
+ - Input files: /data2/AGCD/v2-0-1/precip/total/r001/01month/ (AGCD downloaded files)
+ - Mask file: /Noongar_seasons/boundaries/Noongarborder_merged.shp (created in 1 above)
+ - Output climatology file 1: /Noongar_seasons/output/masked_monclim_from_1961_1990.nc 
+ - Output climatology file 2: /Noongar_seasons/output/masked_monclim_from_1993_2022.nc
+
+
+***3. Calculate monthly means 
+
+ - Script: /Noongar_seasons/scripts/calc_masked_monthly_means.py 
+ - Input files: /data2/AGCD/v2-0-1/precip/total/r001/01month/ (AGCD downloaded files)
+ - Mask file: /Noongar_seasons/boundaries/Noongarborder_merged.shp (created in 1 above)
+ - Output masked monthly mean file 1: /Noongar_seasons/output/masked_mthmeans_1900_2022.nc 
+ - Output masked monthly mean file 2: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/masked_mthmeans_1961_1990.nc
+ - Output masked monthly mean file 3: /Noongar_seasons/output/masked_mthmeans_1993_2022.nc 
+
+**Figure 2. Absolute change in monthly rainfall 
+===============================================
 Absolute change in rainfall for each month, 1993-2022 compared to 1961-1990 with significance stippling (significance mask P < 0.05, using the Mann-Whitney U test).
 
-
-1. Create Noongar region mask .nc file from shape file 
-
-* Script: /data/Kerryn/My_Scripts/AGCD_Scripts/create_mask.py
-* Original Shapefile: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/mask_JK_superceded/Noongarborder.shp 
-* Merged Shapefile (used in calculations*): /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/Noongarborder_merged.shp 
-* Output mask file: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/mask_merged.nc 
-
-* Note: the original shape file was obtained from Sarah Sapsford and merged in ArcGIS by Kerryn Hawke into a single polygon over the land (retaining island polygons) before converting into NetCDF format. This was done as the original had many polygons which resulted in erroneous null values within the region in the NetCDF file. 
-
-
-2. Create monthly climatologies 
-
-* Script: /data/Kerryn/My_Scripts/AGCD_Scripts/calc_masked_monthly_climatology.py 
-* Input files: /data2/AGCD/v2-0-1/precip/total/r001/01month/ 
-* Mask file: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/mask_merged.nc (created in Step 1)
-* Output climatology file 1: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/monclim_from_1961_1990.nc 
-* Output climatology file 2: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/monclim_from_1993_2022.nc
-
-
-3. Calculate monthly means 
-
-* Script: /data/Kerryn/AGCD_Scripts/calc_masked_monthly_means.py 
-* Input files: /data2/AGCD/v2-0-1/precip/total/r001/01month/ 
-* Mask file: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/mask_merged.nc (created in Step 1)
-* Output masked monthly mean file 1: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/masked_mthmeans_1900_2022.nc 
-* Output masked monthly mean file 2: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/masked_mthmeans_1961_1990.nc
-* Output masked monthly mean file 3: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/masked_mthmeans_1993_2022.nc 
-
-
-4. Calculate absolute change in rainfall between 1961-1990 and 1993-2022 
+***4. Calculate absolute change in rainfall between 1961-1990 and 1993-2022 
 
 * Calculation: absolute_change = monthly_means_1993_2022 - monthly_means_1961_1990 
 
-* Script: /data/Kerryn/AGCD_Scripts/calc_masked_abs_prop_rain_change.py 
+* Script: /Noongar_seasons/scripts/calc_masked_abs_prop_rain_change.py 
 * Input climatology file 1: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/monclim_from_1961_1990.nc 
 * Input climatology file 2: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/monclim_from_1993_2022.nc 
 * Input monthly mean file 1: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/masked_mthmeans_1961_1990.nc 
@@ -50,7 +49,7 @@ Absolute change in rainfall for each month, 1993-2022 compared to 1961-1990 with
 
 * Test: Mann-Whitney U test, where P < 0.05
 
-* Script: /data/Kerryn/AGCD_Scripts/calc_masked_abs_sig_month_mask.py
+* Script: /Noongar_seasons/scripts/calc_masked_abs_sig_month_mask.py
 * Input masked monthly mean file 2: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/masked_mthmeans_1961_1990.nc (created in Step 3)
 * Input masked monthly mean file 3: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/masked_mthmeans_1993_2022.nc (created in Step 3)
 * Mask file: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/mask_merged.nc (created in Step 1)
@@ -60,7 +59,7 @@ Absolute change in rainfall for each month, 1993-2022 compared to 1961-1990 with
 6. Create absolute change in monthly rainfall plot
 * 3x4 plot showing spatial absolute change in monthly rainfall across Noongar region (-50 mm to +50 mm) with significance stippling (P = 0.05)
 
-* Script: /data/Kerryn/AGCD_Scripts/plot_abs_month_rain_panel.py
+* Script: /Noongar_seasons/scripts/plot_abs_month_rain_panel.py
 * Input absolute change file: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/masked_abs_change_1993_2022_minus_1961_1990.nc (created in Step 4)
 * Input masked monthly absolute change significance mask file: /data2/Kerryn/AGCD_Clim_Sarah_Sapsford_Paper/mask_abs_month_significance_masked.nc (created in Step 5)
 * Output plot: /data/Kerryn/AGCD_Scripts/dir_figs/mask_abs_sig_change_month_rain_sig.png
